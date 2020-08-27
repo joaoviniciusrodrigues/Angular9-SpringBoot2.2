@@ -1,6 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Cliente } from './clientes/cliente';
-import { HttpClient } from '@angular/common/http'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { HttpClient } from '@angular/common/http'
 export class ClientesService {
 
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getCliente(): Cliente {
 
@@ -21,6 +22,10 @@ export class ClientesService {
 
     return cliente;
 
+  }
+
+  salvar(cliente: Cliente): Observable<Cliente> {
+    return this.http.post<Cliente>('', cliente);
   }
 
 
