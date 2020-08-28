@@ -5,7 +5,18 @@
 
 <div class="container-fluid">
     <form #clienteForm="ngForm" (ngSubmit)="onSubmit()">
-        <div class="row">
+
+
+        <div class="alert alert-success row" role="alert" *ngIf="success == true">
+            Cliente salvo com sucesso!
+        </div>
+
+        <div class="alert alert-danger row" role="alert" *ngFor="let erro of errors">
+            {{erro}}
+        </div>
+
+
+        <div class="row" *ngIf="cliente.id">
             <div class="col-md-6">
                 <div class="form-group">
                     <label>ID: </label>
