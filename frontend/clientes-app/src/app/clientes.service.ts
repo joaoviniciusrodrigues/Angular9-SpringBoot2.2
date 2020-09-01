@@ -11,16 +11,9 @@ export class ClientesService {
 
   constructor(private http: HttpClient) { }
 
-  getCliente(): Cliente {
+  getCliente(): Observable<Cliente[]> {
 
-    let cliente: Cliente = new Cliente();
-
-    cliente.cpf = '0201212321';
-    cliente.nome = 'João Vinicius Rodrigues do Nascimento';
-    cliente.id = 1;
-    cliente.dataCadastro = '10-02-1998';
-
-    return cliente;
+    return this.http.get<Cliente[]>('http://localhost:8080/api/clientes');
 
   }
 
