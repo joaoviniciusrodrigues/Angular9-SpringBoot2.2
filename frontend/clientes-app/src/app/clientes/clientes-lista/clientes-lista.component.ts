@@ -10,19 +10,36 @@ import { Router } from '@angular/router';
 })
 export class ClientesListaComponent implements OnInit {
   clientes: Cliente[] = [];
+  clienteSelecionado: Cliente;
+  mensagemSucesso: string;
+  mensagemErro: string;
 
   constructor(private clienteServise: ClientesService, private router: Router) {
   }
 
   ngOnInit(): void {
     this.clienteServise.getClientes().
-    subscribe(resposta => this.clientes = resposta);
+      subscribe(resposta => this.clientes = resposta);
   }
 
-  novoCadastro(){
+  novoCadastro() {
     this.router.navigate(['/cliente-form']);
   }
 
-  
+  deleta() {
+    this.clienteServise.deleteById(this.clienteSelecionado).subscribe(
+      response => {
+        this.mensagemSucesso = "Cliente excluido com sucesso!"
+        this.ngOnInit()
+      },
+      error => this.mensagemErro = "Erro ao excluir cliente"
+    );
+  }
+
+  carregaClienteSelecionado(cliente: Cliente) {
+    this.clienteSelecionado = cliente;
+  }
+
+
 
 }

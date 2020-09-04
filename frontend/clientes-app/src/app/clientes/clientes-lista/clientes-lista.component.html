@@ -4,6 +4,14 @@
 </ol>
 <div class="container-fluid">
 
+    <div class="alert alert-success row" role="alert" *ngIf="mensagemSucesso">
+        {{mensagemSucesso}}
+    </div>
+
+    <div class="alert alert-danger row" role="alert" *ngIf="mensagemErro">
+        {{mensagemErro}}
+    </div>
+
     <div class="row">
         <div class="col-md-2">
             <button class="btn btn-warning" (click)="novoCadastro()">
@@ -35,10 +43,10 @@
                             <button class="btn btn-primary" routerLink="/cliente-form/{{ cliente.id }}">
                                 <i class="fa fa-edit"></i>
                             </button>
-                            
-                                               
-                            <button class="btn btn-danger  ml-1" >
-                                <i class="fas fa-trash"></i>
+
+
+                            <button class="btn btn-danger  ml-1" data-toggle="modal" data-target="#modalDelecao" (click)="carregaClienteSelecionado(cliente)">
+                                <i class="fas fa-trash"></i>                            
                             </button>
                         </td>
                     </tr>
@@ -46,5 +54,44 @@
 
             </table>
         </div>
+    </div>
+
+    <div id="modalDelecao" class="modal fade" role="dialog">
+
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4>Confimação</h4>
+                </div>
+
+                <div class="modal-body" *ngIf="clienteSelecionado">
+                    Confirma a exclusão do(a) cliente {{ clienteSelecionado.nome }}
+                </div>
+
+                <div class="modal-footer">
+
+                    <button class="btn btn-success" (click)="deleta()" data-dismiss="modal">
+                        Confirmar
+                    </button>
+
+
+                    <button class="btn btn-default  ml-1" data-dismiss="modal">
+                        Cancelar
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+
+
+
     </div>
 </div>
