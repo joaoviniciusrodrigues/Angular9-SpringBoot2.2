@@ -1,4 +1,4 @@
-package io.github.joaoviniciusrodriuges.clientes.model.rest;
+package io.github.joaoviniciusrodriuges.clientes.rest.exception;
 
 import lombok.Getter;
 

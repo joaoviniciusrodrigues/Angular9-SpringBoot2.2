@@ -1,4 +1,4 @@
-package io.github.joaoviniciusrodriuges.clientes.model.rest.dto;
+package io.github.joaoviniciusrodriuges.clientes.rest.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -6,8 +6,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class ServicoPrestadoDTO {
+
     private String descricao;
     private String preco;
     private String data;
     private Integer idCliente;
+
 }

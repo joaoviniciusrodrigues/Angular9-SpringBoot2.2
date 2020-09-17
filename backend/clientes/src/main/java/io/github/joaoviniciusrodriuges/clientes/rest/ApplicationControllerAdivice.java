@@ -1,5 +1,6 @@
-package io.github.joaoviniciusrodriuges.clientes.model.rest;
+package io.github.joaoviniciusrodriuges.clientes.rest;
 
+import io.github.joaoviniciusrodriuges.clientes.rest.exception.ApiErrors;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
