@@ -42,7 +42,7 @@ public class ServicoPrestadoController {
         servicoPrestado.setCliente(cliente);
         servicoPrestado.setValor(bigDecimalConverter.converter(dto.getPreco()));
 
-        repository.save(servicoPrestado);
+        return repository.save(servicoPrestado);
 
     }
 
