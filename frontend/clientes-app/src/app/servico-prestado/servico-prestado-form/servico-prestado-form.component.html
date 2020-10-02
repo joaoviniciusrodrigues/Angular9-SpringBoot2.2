@@ -6,6 +6,14 @@
     
     <form #form="ngForm" (submit)="onSubmit()" >
         
+        <div class="alert alert-success row" role="alert" *ngIf="success == true">
+            Cliente salvo com sucesso!
+        </div>
+
+        <div class="alert alert-danger row" role="alert" *ngFor="let erro of errors">
+            {{erro}}
+        </div>
+        
         <div class="row">
             
             <div class="col-md-12">

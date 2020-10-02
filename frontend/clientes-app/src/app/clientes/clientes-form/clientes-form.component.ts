@@ -48,7 +48,7 @@ export class ClientesFormComponent implements OnInit {
 
       }, erroResponse => {
 
-        this.errors = ['Erro ao atulaizar cliente.'];
+        this.errors = erroResponse.error.errors;
         this.success = false;
 
       })
@@ -66,9 +66,6 @@ export class ClientesFormComponent implements OnInit {
 
       })
     }
-
-
-
 
 
   }

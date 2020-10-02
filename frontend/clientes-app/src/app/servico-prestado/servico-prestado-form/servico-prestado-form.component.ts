@@ -10,24 +10,37 @@ import { ServicoPrestadoService } from 'src/app/servico-prestado.service';
   styleUrls: ['./servico-prestado-form.component.css']
 })
 export class ServicoPrestadoFormComponent implements OnInit {
-
+  success: boolean;
+  errors: String[];
   clientes: Cliente[] = [];
   servico: ServicoPrestado;
 
-  constructor(private clienteService: ClientesService, private servicoPrestadoService: ServicoPrestadoService) { 
+  constructor(private clienteService: ClientesService, private servicoPrestadoService: ServicoPrestadoService) {
     this.servico = new ServicoPrestado();
   }
 
   ngOnInit(): void {
     this.clienteService
-    .getClientes()
-    .subscribe(response => this.clientes = response);
+      .getClientes()
+      .subscribe(response => this.clientes = response);
   }
 
-  onSubmit(){
+  onSubmit() {
     this.servicoPrestadoService
-    .salvar(this.servico)
-    .subscribe(response=> console.log(response));
+      .salvar(this.servico)
+      .subscribe(response => {
+        
+        this.success = true;
+        this.errors = null;
+        this.servico = new ServicoPrestado();
+
+      }, erroResponse => {
+        
+        this.errors = erroResponse.error.errors;
+        this.success = false;
+
+      }
+      );
 
     console.log(this.servico);
   }
