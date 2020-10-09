@@ -11,6 +11,7 @@
     <div class="alert alert-danger row" role="alert" *ngIf="mensagemErro">
         {{mensagemErro}}
     </div>
+    
 
     <div class="row">
         <div class="col-md-2">
@@ -33,6 +34,7 @@
                         <th></th>
                     </tr>
                 </thead>
+
                 <tbody>
                     <tr *ngFor="let cliente of clientes">
                         <td>{{ cliente.id }}</td>
@@ -40,7 +42,7 @@
                         <td>{{ cliente.cpf }}</td>
                         <td>{{ cliente.dataCadastro }}</td>
                         <td>
-                            <button class="btn btn-primary" routerLink="/cliente-form/{{ cliente.id }}">
+                            <button class="btn btn-primary" routerLink="/clientes/form/{{ cliente.id }}">
                                 <i class="fa fa-edit"></i>
                             </button>
 
@@ -51,8 +53,13 @@
                         </td>
                     </tr>
                 </tbody>
-
+                                
             </table>
+
+            <div class="alert alert-warning row" role="alert" *ngIf="clientes.length == 0">
+                Nenhum registro encontrado.
+            </div>
+            
         </div>
     </div>
 

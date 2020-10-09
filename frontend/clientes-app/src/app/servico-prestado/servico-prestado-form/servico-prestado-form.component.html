@@ -7,7 +7,7 @@
     <form #form="ngForm" (submit)="onSubmit()" >
         
         <div class="alert alert-success row" role="alert" *ngIf="success == true">
-            Cliente salvo com sucesso!
+            Serviço salvo com sucesso!
         </div>
 
         <div class="alert alert-danger row" role="alert" *ngFor="let erro of errors">
@@ -58,7 +58,8 @@
                     <label>Preço:</label>
                     <input class="form-control"
                            [(ngModel)]="servico.preco" type="text" 
-                           name="preco" id="inputPreco">
+                           name="preco" id="inputPreco"                           
+                           >
                 </div>
             </div>
 
@@ -67,14 +68,21 @@
         
         
         <div class="row">
+           
             <div class="col-md-3">
+                
                 <button type="submit" class="btn btn-success">
                     <i class="fa fa-save">
                     </i>
                     Salvar
                 </button>
+
+                <button type="button" class="btn btn-secondary ml-1" routerLink="/servico-prestado/lista">
+                    <i class=" fa fa-arrow-alt-circle-left"></i>Voltar
+                </button>
                 
             </div>
+            
         </div>
 
     </form>

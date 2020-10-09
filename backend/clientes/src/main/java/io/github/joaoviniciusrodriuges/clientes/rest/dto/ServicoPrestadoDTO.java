@@ -14,6 +14,8 @@ import javax.validation.constraints.NotNull;
 @Builder
 public class ServicoPrestadoDTO {
 
+    private Integer id;
+
     @NotEmpty(message = "{campo.descricao.obrigatorio}")
     private String descricao;
 

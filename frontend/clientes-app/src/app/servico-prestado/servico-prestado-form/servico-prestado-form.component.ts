@@ -3,6 +3,8 @@ import { Cliente } from '../../clientes/cliente';
 import { ClientesService } from '../../clientes.service';
 import { ServicoPrestado } from '../servicoPrestado';
 import { ServicoPrestadoService } from 'src/app/servico-prestado.service';
+import { Observable } from 'rxjs';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-servico-prestado-form',
@@ -14,15 +16,31 @@ export class ServicoPrestadoFormComponent implements OnInit {
   errors: String[];
   clientes: Cliente[] = [];
   servico: ServicoPrestado;
+  id: number;
 
-  constructor(private clienteService: ClientesService, private servicoPrestadoService: ServicoPrestadoService) {
+  constructor(private clienteService: ClientesService, private servicoPrestadoService: ServicoPrestadoService, private activatedRoute: ActivatedRoute) {
     this.servico = new ServicoPrestado();
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.clienteService
       .getClientes()
       .subscribe(response => this.clientes = response);
+
+    let params: Observable<Params> = this.activatedRoute.params;
+
+    params.subscribe(urlParams => {
+      this.id = urlParams['id'];
+      if (this.id) {
+        this.servicoPrestadoService.getServicoPrestadoById(this.id)
+          .subscribe(
+            response => {
+              this.servico = response;              
+            },
+            errorResposnse => this.servico = new ServicoPrestado()
+          )
+      }
+    })
   }
 
   onSubmit() {
@@ -42,7 +60,6 @@ export class ServicoPrestadoFormComponent implements OnInit {
       }
       );
 
-    console.log(this.servico);
   }
 
 }
