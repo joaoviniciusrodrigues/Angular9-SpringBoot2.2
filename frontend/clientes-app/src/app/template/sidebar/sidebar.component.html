@@ -17,11 +17,18 @@
                     Serviços prestados
                 </a>
 
+                <div class="sb-sidenav-menu-heading">Logoat</div>
+                    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseLayouts" (click)="logout()" href="#" aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
+                       Sair
+                    </a>  
+                
+
             </div>
         </div>
         <div class="sb-sidenav-footer">
-            <div class="small">Logged in as:</div>
-            Start Bootstrap
+            <div class="small">Usuário logado:</div>
+            {{usuarioLogado}}
         </div>
     </nav>
 </div>

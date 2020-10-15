@@ -29,7 +29,7 @@ public class ApplicationControllerAdivice {
 
     @ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity handleResponseStatusException(ResponseStatusException ex){
-        String messageErro = ex.getMessage();
+        String messageErro = ex.getReason();
         HttpStatus codigoStatus = ex.getStatus();
         ApiErrors apiErrors = new ApiErrors(messageErro);
         return new ResponseEntity(apiErrors, codigoStatus);

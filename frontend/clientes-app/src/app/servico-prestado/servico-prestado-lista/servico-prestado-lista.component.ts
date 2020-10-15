@@ -13,7 +13,7 @@ export class ServicoPrestadoListaComponent implements OnInit {
   nome: string;
   mes: number;
   meses: number[];
-  lista: ServicoPrestadoBusca[];
+  lista: ServicoPrestadoBusca[] = [];;
   servicoPrestadoSelecionado: ServicoPrestadoBusca;
   mensagemSucesso: string;
   mensagemErro: string;
@@ -44,7 +44,7 @@ export class ServicoPrestadoListaComponent implements OnInit {
   }
 
   carregaServicoPrestadoSelecionado(servicoPrestado: ServicoPrestadoBusca){
-    this.servicoPrestadoSelecionado = servicoPrestado;
+    this.servicoPrestadoSelecionado = servicoPrestado;   
   }
 
 }

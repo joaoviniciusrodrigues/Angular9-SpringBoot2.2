@@ -14,15 +14,6 @@ public class ClienteApplication {
     @Autowired
     ClienteRepository clienteRepository;
 
-    @Bean
-    public CommandLineRunner run(){
-        return args -> {
-            Cliente cliente = new Cliente().builder().cpf("06011573118").nome("Fulano").build();
-            clienteRepository.save(cliente);
-
-        };
-    }
-
     public static void main(String[] args) {
 
         SpringApplication.run(ClienteApplication.class, args);
